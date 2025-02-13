@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "public": true,
+  "routes": [
+    {
+      "src": "/api/randomImage",
+      "dest": "/api/randomImage.js"
+    },
+    {
+      "src": "/(.*)",
+      "headers": { "Cache-Control": "s-maxage=31536000, immutable" }
+    }
+  ]
+}

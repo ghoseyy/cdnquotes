@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes & Reels Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        main {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .quotes .quote {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .reels .reel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .reels .reel-item {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        footer nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        @media (max-width: 600px) {
+            .reels .reel-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Quotes & Reels</h1>
+        </header>
+        <main>
+            <section class="search-bar">
+                <input type="text" placeholder="Search for an item...">
+            </section>
+            <section class="quotes">
+                <div class="quote">
+                    <p>Be yourself; everyone else is already taken.</p>
+                </div>
+                <div class="quote">
+                    <p>Patience is the companion of wisdom.</p>
+                </div>
+                <div class="quote">
+                    <p>To know, is to know that you know nothing. That is the meaning of true knowledge.</p>
+                </div>
+            </section>
+            <section class="reels">
+                <h2>Reels</h2>
+                <div class="reel-grid">
+                    <div class="reel-item">Reel 1</div>
+                    <div class="reel-item">Reel 2</div>
+                    <div class="reel-item">Reel 3</div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">Categories</a>
+                <a href="#">Reels</a>
+                <a href="#">Profile</a>
+            </nav>
+        </footer>
+    </div>
+</body>
+</html>
