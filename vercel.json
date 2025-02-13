@@ -7,6 +7,10 @@
       "dest": "/api/randomImage.js"
     },
     {
+      "src": "/api/test",
+      "dest": "/api/test.js"
+    },
+    {
       "src": "/(.+)/images/(.+)",
       "dest": "/public/$1/images/$2"
     },
