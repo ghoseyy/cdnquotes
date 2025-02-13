@@ -7,6 +7,10 @@
       "dest": "/api/randomImage.js"
     },
     {
+      "src": "/(.+)/images/(.+)",
+      "dest": "/public/$1/images/$2"
+    },
+    {
       "src": "/(.*)",
       "headers": { "Cache-Control": "s-maxage=31536000, immutable" }
     }
