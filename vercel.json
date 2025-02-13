@@ -4,23 +4,19 @@
   "routes": [
     {
       "src": "/api/randomImage",
-      "dest": "/api/randomImage.js",
-      "headers": {
-        "Cache-Control": "no-cache, no-store, must-revalidate",
-        "Pragma": "no-cache",
-        "Expires": "0"
-      }
+      "dest": "/api/randomImage.js"
+    },
+    {
+      "src": "/api/test",
+      "dest": "/api/test.js"
     },
     {
       "src": "/(.+)/images/(.+)",
-      "dest": "/public/$1/images/$2",
-      "headers": {
-        "Cache-Control": "no-cache"
-      }
+      "dest": "/public/$1/images/$2"
+    },
+    {
+      "src": "/(.*)",
+      "headers": { "Cache-Control": "s-maxage=31536000, immutable" }
     }
-  ],
-  "builds": [
-    { "src": "api/**/*.js", "use": "@vercel/node" },
-    { "src": "public/**/*", "use": "@vercel/static" }
   ]
 }

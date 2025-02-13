@@ -1,17 +1,10 @@
 import fs from 'fs/promises';
 import path from 'path';
-import crypto from 'crypto';
 
 const allowedCategories = [
   'englishasset', 'hindi', 'urdu', 'Nepali', 'Love',
   'Inspiration', 'Motivation', 'Wisdom', 'Life'
 ];
-
-// Better random number generator using crypto
-function getSecureRandom(max) {
-  const rand = crypto.randomBytes(4).readUInt32LE() / 0x100000000;
-  return Math.floor(rand * max);
-}
 
 export default async function handler(req, res) {
   try {
@@ -21,33 +14,50 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Invalid category' });
     }
 
-    const dir = path.join(process.cwd(), 'public', category, 'images');
+    const baseDir = process.cwd();
+    console.log('Base directory:', baseDir);
+    
+    const dir = path.join(baseDir, 'public', category, 'images');
+    console.log('Full path:', dir);
+
+    // List contents of public directory
+    try {
+      const publicContents = await fs.readdir(path.join(baseDir, 'public'));
+      console.log('Contents of public directory:', publicContents);
+    } catch (e) {
+      console.error('Error reading public directory:', e);
+    }
 
     try {
       await fs.access(dir);
-    } catch {
-      return res.status(404).json({ error: 'Category folder not found' });
+      console.log('Directory exists and is accessible');
+    } catch (e) {
+      console.error('Directory access error:', e);
+      return res.status(404).json({ 
+        error: 'Category folder not found',
+        path: dir,
+        baseDir: baseDir,
+        category: category
+      });
     }
 
     const files = await fs.readdir(dir);
-    
+    console.log('Files found:', files);
+
     if (files.length === 0) {
       return res.status(404).json({ error: 'No images found' });
     }
 
-    // Use crypto-secure random selection
-    const randomImage = files[getSecureRandom(files.length)];
-    
-    // Add cache-busting query parameter
-    const timestamp = Date.now();
-    const imageUrl = `/${category}/images/${randomImage}?t=${timestamp}`;
+    const randomImage = files[Math.floor(Math.random() * files.length)];
+    const imageUrl = `/${category}/images/${randomImage}`;
 
-    return res.status(200).json({ 
-      url: imageUrl,
-      totalImages: files.length
-    });
+    return res.status(200).json({ url: imageUrl });
   } catch (error) {
     console.error('Error:', error);
-    return res.status(500).json({ error: 'Server error', details: error.message });
+    return res.status(500).json({ 
+      error: 'Server error', 
+      details: error.message,
+      stack: error.stack
+    });
   }
 }
