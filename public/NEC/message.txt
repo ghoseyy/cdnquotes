@@ -1,1 +1,33 @@
-its me bimboee
+{
+  "message": "A heartfelt thank you to everyone who contributed to making this app a reality. Your guidance, feedback, and unwavering support have been instrumental in creating a tool that empowers engineering students across Nepal.",
+  "contributors": [
+    {
+      "name": "The Engineering Community",
+      "role": "For invaluable feedback and testing",
+      "avatar": "https://api.dicebear.com/7.x/initials/svg?seed=EC&backgroundColor=4f46e5"
+    },
+    {
+      "name": "Open Source Contributors",
+      "role": "For the amazing tools and libraries",
+      "avatar": "https://api.dicebear.com/7.x/initials/svg?seed=OS&backgroundColor=059669"
+    },
+    {
+      "name": "Mentors & Advisors",
+      "role": "For guidance throughout development",
+      "avatar": "https://api.dicebear.com/7.x/initials/svg?seed=MA&backgroundColor=dc2626"
+    }
+  ],
+  "links": [
+    {
+      "title": "Support the Project",
+      "url": "https://github.com/ghoseyy",
+      "icon": "github"
+    },
+    {
+      "title": "Share Feedback",
+      "url": "https://forms.gle/yourform",
+      "icon": "message"
+    }
+  ],
+  "closingNote": "Together, we're building a brighter future for Nepal's engineers. 🇳🇵"
+}
